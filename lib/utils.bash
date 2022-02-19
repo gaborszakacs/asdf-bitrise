@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for bitrise.
-GH_REPO="https://github.com/gaborszakacs/bitrise"
+GH_REPO="https://github.com/bitrise-io/bitrise"
 TOOL_NAME="bitrise"
 TOOL_TEST="bitrise version"
 
@@ -42,7 +42,7 @@ download_release() {
   filename="$2"
 
   # TODO: Adapt the release URL convention for bitrise
-  url="$GH_REPO/archive/v${version}.tar.gz"
+  url="$GH_REPO/releases/download/${version}/bitrise-$(uname -s)-$(uname -m)"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
